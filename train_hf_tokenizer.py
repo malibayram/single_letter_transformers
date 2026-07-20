@@ -15,9 +15,9 @@ from tokenizers.pre_tokenizers import ByteLevel
 from tokenizers.trainers import BpeTrainer
 from transformers import AutoTokenizer, PreTrainedTokenizerFast
 
-TEXT_FILE = "text.txt"
-REPO_ID = "your-huggingface-name/my-tokenizer"
-VOCAB_SIZE = 1_000
+TEXT_FILE = "datasets/bpe-dataset-corpus.txt"
+REPO_ID = "alibayram/my-tokenizer-demo"
+VOCAB_SIZE = 2 ** 13
 
 SPECIAL_TOKENS = ["<unk>", "<pad>", "<bos>", "<eos>"]
 
