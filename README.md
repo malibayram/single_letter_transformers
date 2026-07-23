@@ -34,6 +34,21 @@ is commented line by line, and [`lora/by_hand.py`](lora/by_hand.py) verifies eac
 concept on pencil-friendly numbers your students can check by hand. See
 [`lora/README.md`](lora/README.md).
 
+## Bonus: quantization from numbers to packed weights
+
+[`quantization/`](quantization/) is a second **teaching and practice module**. It
+starts with `scale`, `zero_point`, rounding and clipping, then implements real
+INT8 storage and signed/unsigned **packed INT4** (two values per byte), a
+float-weight-free `QuantizedLinear`, PTQ/QAT with an STE, NF4, and the 144-byte
+Q4_K super-block structure. It now also includes a structurally faithful
+**Q8_0** implementation: 32 signed INT8 codes plus one FP16 scale (34 bytes,
+8.5 bits/weight), a float-weight-free `Q8_0Linear`, hand calculations, and a
+dedicated TinyQwen evaluation. Its demos compare FP32/Q8_0/INT4 and isolate the
+central ideas behind GPTQ, AWQ and SmoothQuant. Every numerical claim is
+asserted in runnable CPU examples; the documentation also explains why
+readable PyTorch storage code is not an optimized low-bit inference kernel. See
+[`quantization/README.md`](quantization/README.md).
+
 ## Design rules
 
 - **One module = one file.** `config → rms_norm → rotary → attention → mlp → block → model`.
